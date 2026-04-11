@@ -23,3 +23,9 @@ export class deleteCategoryDTO {
     @IsNotEmpty()
     categoryId: string;
 }
+
+export class getCategoryDTO {
+    @IsString()
+    @IsNotEmpty()
+    categoryId: string;
+}
