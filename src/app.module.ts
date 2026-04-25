@@ -1,18 +1,13 @@
 import { Module } from '@nestjs/common';
-import { UserController } from './controller/userController';
 import { UserModule } from './module/userModule';
 import { CategoryModule } from './module/categoryModule';
 import { NoteModule } from './module/noteModule';
-import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule } from '@nestjs/config';
 import { CustomGuard } from './myGuard/customGuard';
+import { AuthModule } from './module/authModule';
 
 @Module({
-  imports: [UserModule, CategoryModule, NoteModule,
-    JwtModule.register({
-      secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: '15m' },
-    }),
+  imports: [UserModule, CategoryModule, NoteModule, AuthModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),

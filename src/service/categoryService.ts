@@ -7,7 +7,7 @@ export class categoryService {
     constructor(private category: CategoryCRUD) { }
 
     async create(createCategoryDto: createCategoryDTO) {
-        return await this.category.create(createCategoryDto.categoryName, createCategoryDto.categoryId);
+        return await this.category.create(createCategoryDto.categoryName, createCategoryDto.categoryId,createCategoryDto.folderId);
     }
 
     async editCategory(editCategoryDto: updateCategoryDTO) {

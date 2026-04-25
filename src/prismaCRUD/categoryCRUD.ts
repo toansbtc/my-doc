@@ -8,11 +8,12 @@ export class CategoryCRUD {
         this.prisma = prisma;
     }
 
-    async create(categoryName: string, categoryId: string) {
+    async create(categoryName: string, categoryId: string,folderId:number) {
         return this.prisma.category.create({
             data: {
                 categoryId,
                 categoryName,
+                folderId:folderId
             },
         });
     }

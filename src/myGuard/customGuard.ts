@@ -1,4 +1,4 @@
-import { CanActivate, ExecutionContext, Injectable } from "@nestjs/common";
+import { CanActivate, ExecutionContext, UnauthorizedException, Injectable, ForbiddenException } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
 import { Private_Key } from "src/decorator/role";
 import { JwtService } from "@nestjs/jwt";
@@ -16,16 +16,34 @@ export class CustomGuard implements CanActivate {
         if (isPrivate) {
             const request = context.switchToHttp().getRequest();
             const token = request.cookies.token;
-            if (token) {
-                try {
-                    const decoded = this.jwtService.verify(token);
-                    request.user = decoded;
-                    return true;
-                } catch (error) {
-                    return false;
+            const refreshtoken = request.cookies.refreshToken;
+
+            console.log('this is token ', token, '--', refreshtoken)
+
+            try {
+                {
+                    if (refreshtoken) {
+                        if (token) {
+                            const decoded = this.jwtService.verify(token);
+                            request.user = decoded;
+                            return true;
+                        }
+                        else
+                            {
+                                console.log('running token expired')
+                                throw new UnauthorizedException('token expired')
+                            }
+                    }
+                    else {
+                        console.log('running dont loggin anyway')
+                        throw new ForbiddenException('dont login anyway')
+                    }
                 }
             }
-            return false;
+            catch (error) {
+                console.log('running getting error')
+                return false
+            }
         }
         return true;
     }

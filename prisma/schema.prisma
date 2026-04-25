@@ -23,6 +23,8 @@ model Category {
   categoryId   String @id
   categoryName String @unique
   notes        Note[]
+  folder       folder @relation(fields: [folderId], references: [folderId], onDelete: Cascade)
+  folderId     Int
 }
 
 model Note {
@@ -31,4 +33,10 @@ model Note {
   content    String
   category   Category @relation(fields: [categoryId], references: [categoryId], onDelete: Cascade)
   categoryId String
+}
+
+model folder {
+  folderId   Int        @id @default(autoincrement())
+  folderName String
+  category   Category[]
 }

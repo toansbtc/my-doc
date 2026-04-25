@@ -7,6 +7,9 @@ export class createCategoryDTO {
     @IsString()
     @IsNotEmpty()
     categoryId: string;
+    @IsString()
+    @IsNotEmpty()
+    folderId: number;
 }
 
 export class updateCategoryDTO {

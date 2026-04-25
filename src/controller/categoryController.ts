@@ -1,4 +1,4 @@
-import { Controller, Delete, Post, Put } from "@nestjs/common";
+import { Controller, Delete, Get, Post, Put } from "@nestjs/common";
 import { Private } from "src/decorator/role";
 import { categoryService } from "src/service/categoryService";
 import { Body } from "@nestjs/common";
@@ -26,7 +26,7 @@ export class CategoryController {
         return await this.categoryService.delete(deleteCategoryDto.categoryId);
     }
 
-    @Post("get-all")
+    @Get("get-all")
     async getAll() {
         return await this.categoryService.getAllCategories();
     }

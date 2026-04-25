@@ -19,8 +19,28 @@ export class UserController {
         return await this.userService.create(createUserDto);
     }
 
+    @Private()
+    @Get('/me')
+    async name() {
+        return true
+    }
+
+    @Private()
+    @Get('/logout')
+    async logout(@Res({ passthrough: true }) res: express.Response) {
+        res.clearCookie('token', {
+            secure: true
+        })
+        res.clearCookie('refreshToken', {
+            secure: true
+        })
+    }
+
     @Post('/login')
     async findOne(@Body() loginDTO: LoginDTO, @Res({ passthrough: true }) res: express.Response) {
+
+        console.log(process.env.JWT_SECRET);
+        console.log(process.env.REFRESH_TOKEN_SECRET);
 
         const userInfo = await this.userService.findOne(loginDTO.userName);
         if (userInfo) {
@@ -56,15 +76,19 @@ export class UserController {
     @Post('/get-token')
     async refresh(@ReadCookie('refreshToken') refreshToken: string, @Res({ passthrough: true }) res: express.Response) {
         try {
-            const decoded = this.jwtService.verify(refreshToken, { secret: process.env.REFRESH_TOKEN_SECRET });
-            const payload = { userName: decoded.userName, role: decoded.role };
-            res.cookie('token', this.jwtService.sign(payload), {
-                httpOnly: true,
-                secure: true,
-                sameSite: 'strict',
-                maxAge: 1000 * 60 * 15
-            });
-            return "Refresh token success";
+            console.log(refreshToken);
+            if (refreshToken) {
+                const decoded = this.jwtService.verify(refreshToken, { secret: process.env.REFRESH_TOKEN_SECRET });
+                const payload = { userName: decoded.userName, role: decoded.role };
+                res.cookie('token', this.jwtService.sign(payload), {
+                    httpOnly: true,
+                    secure: true,
+                    sameSite: 'strict',
+                    maxAge: 1000 * 60 * 15
+                });
+                return "Refresh token success";
+            }
+            return 'refreshToken expired'
         } catch (error) {
             return "Refresh token failed: " + error.message;
         }
