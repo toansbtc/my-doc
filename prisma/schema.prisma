@@ -20,7 +20,7 @@ model User {
 }
 
 model Category {
-  categoryId   String @id
+  categoryId   Int @id @default(autoincrement())
   categoryName String @unique
   notes        Note[]
   folder       folder @relation(fields: [folderId], references: [folderId], onDelete: Cascade)
@@ -32,7 +32,7 @@ model Note {
   keyWord    String
   content    String
   category   Category @relation(fields: [categoryId], references: [categoryId], onDelete: Cascade)
-  categoryId String
+  categoryId Int
 }
 
 model folder {

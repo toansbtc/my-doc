@@ -18,7 +18,7 @@ export class CustomGuard implements CanActivate {
             const token = request.cookies.token;
             const refreshtoken = request.cookies.refreshToken;
 
-            console.log('this is token ', token, '--', refreshtoken)
+            // console.log('this is token ', token, '--', refreshtoken)
 
             try {
                 {
@@ -26,6 +26,8 @@ export class CustomGuard implements CanActivate {
                         if (token) {
                             const decoded = this.jwtService.verify(token);
                             request.user = decoded;
+                            console.log("athentication success");
+                            
                             return true;
                         }
                         else

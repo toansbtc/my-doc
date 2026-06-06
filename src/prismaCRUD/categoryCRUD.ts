@@ -8,17 +8,16 @@ export class CategoryCRUD {
         this.prisma = prisma;
     }
 
-    async create(categoryName: string, categoryId: string,folderId:number) {
+    async create(categoryName: string,folderId:number) {
         return this.prisma.category.create({
             data: {
-                categoryId,
                 categoryName,
                 folderId:folderId
             },
         });
     }
 
-    async getCategory(categoryId: string) {
+    async getCategory(categoryId: number) {
         return this.prisma.category.findUnique({
             where: {
                 categoryId,
@@ -37,7 +36,7 @@ export class CategoryCRUD {
         });
     }
 
-    async update(categoryId: string, categoryName: string) {
+    async update(categoryId: number, categoryName: string) {
         return this.prisma.category.update({
             where: {
                 categoryId,
@@ -48,7 +47,7 @@ export class CategoryCRUD {
         });
     }
 
-    async delete(categoryId: string) {
+    async delete(categoryId: number) {
         return this.prisma.category.delete({
             where: {
                 categoryId,

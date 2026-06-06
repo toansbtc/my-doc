@@ -1,34 +1,31 @@
-import { IsString, IsNotEmpty, IsOptional } from "class-validator";
+import { IsString, IsNotEmpty, IsOptional, IsNumber } from "class-validator";
 
 export class createCategoryDTO {
     @IsString()
     @IsNotEmpty()
     categoryName: string;
-    @IsString()
-    @IsNotEmpty()
-    categoryId: string;
-    @IsString()
+    @IsNumber()
     @IsNotEmpty()
     folderId: number;
 }
 
 export class updateCategoryDTO {
-    @IsString()
+    @IsNumber()
     @IsNotEmpty()
-    categoryId: string;
+    categoryId: number;
     @IsString()
     @IsNotEmpty()
     categoryName: string;
 }
 
 export class deleteCategoryDTO {
-    @IsString()
+    @IsNumber()
     @IsNotEmpty()
     categoryId: string;
 }
 
 export class getCategoryDTO {
-    @IsString()
+    @IsNumber()
     @IsNotEmpty()
     categoryId: string;
 }

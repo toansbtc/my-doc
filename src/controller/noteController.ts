@@ -1,4 +1,4 @@
-import { Controller, Delete, Post, Put } from "@nestjs/common";
+import { Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
 import { Private } from "src/decorator/role";
 import { noteService } from "src/service/noteService";
 import { Body } from "@nestjs/common";
@@ -11,8 +11,15 @@ export class noteController {
     @Private()
     @Post()
     async create(@Body() createNoteDto: createNoteDTO) {
+        console.log(createNoteDTO);
+        
         return await this.noteService.create(createNoteDto);
     }
+
+    @Get()
+    async getAllNote() {
+        return await this.noteService.getAllNote()
+     }
 
     @Private()
     @Put()
@@ -21,8 +28,8 @@ export class noteController {
     }
 
     @Private()
-    @Delete()
-    async delete(@Body() deleteNoteDto: deleteNoteDTO) {
-        return await this.noteService.delete(deleteNoteDto.id);
+    @Delete(":id")
+    async delete(@Param("id",ParseIntPipe) idNote) {
+        return await this.noteService.delete(idNote);
     }
 }

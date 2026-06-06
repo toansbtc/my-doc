@@ -9,19 +9,20 @@ export class CategoryController {
     constructor(private readonly categoryService: categoryService) { }
 
     @Private()
-    @Post()
-    async create(@Body() createCategoryDto: createCategoryDTO) {
+    @Post("/create")
+    async create(@Body() createCategoryDto) {
+        console.log("data category "+createCategoryDto)
         return await this.categoryService.create(createCategoryDto);
     }
 
     @Private()
-    @Put()
+    @Put("/editName")
     async editCategory(@Body() editCategoryDto: updateCategoryDTO) {
         return await this.categoryService.editCategory(editCategoryDto);
     }
 
     @Private()
-    @Delete()
+    @Delete("/delete")
     async delete(@Body() deleteCategoryDto: deleteCategoryDTO) {
         return await this.categoryService.delete(deleteCategoryDto.categoryId);
     }

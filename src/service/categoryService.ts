@@ -7,14 +7,14 @@ export class categoryService {
     constructor(private category: CategoryCRUD) { }
 
     async create(createCategoryDto: createCategoryDTO) {
-        return await this.category.create(createCategoryDto.categoryName, createCategoryDto.categoryId,createCategoryDto.folderId);
+        return await this.category.create(createCategoryDto.categoryName, createCategoryDto.folderId);
     }
 
     async editCategory(editCategoryDto: updateCategoryDTO) {
         return await this.category.update(editCategoryDto.categoryId, editCategoryDto.categoryName);
     }
 
-    async delete(id: string) {
+    async delete(id) {
         return await this.category.delete(id);
     }
 
@@ -22,7 +22,7 @@ export class categoryService {
         return await this.category.getAllCategories();
     }
 
-    async getCategory(id: string) {
+    async getCategory(id) {
         return await this.category.getCategory(id);
     }
 }

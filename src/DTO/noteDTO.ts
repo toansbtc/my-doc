@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsOptional } from "class-validator";
+import { IsString, IsNotEmpty, IsOptional, IsNumber } from "class-validator";
 
 export class createNoteDTO {
     @IsString()
@@ -7,13 +7,13 @@ export class createNoteDTO {
     @IsString()
     @IsNotEmpty()
     content: string;
-    @IsString()
+    @IsNumber()
     @IsNotEmpty()
-    categoryId: string;
+    categoryId: number;
 }
 
 export class updateNoteDTO {
-    @IsString()
+    @IsNumber()
     @IsNotEmpty()
     id: number;
     @IsString()
@@ -25,7 +25,7 @@ export class updateNoteDTO {
 }
 
 export class deleteNoteDTO {
-    @IsString()
+    @IsNumber()
     @IsNotEmpty()
     id: number;
 }

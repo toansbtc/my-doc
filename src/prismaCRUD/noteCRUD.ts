@@ -8,7 +8,7 @@ export class noteCRUD {
         this.prisma = prisma;
     }
 
-    async create(keyWord: string, content: string, categoryId: string) {
+    async create(keyWord: string, content: string, categoryId) {
         return this.prisma.note.create({
             data: {
                 keyWord,
@@ -16,6 +16,10 @@ export class noteCRUD {
                 categoryId,
             },
         });
+    }
+
+    async getAllNote() {
+        return this.prisma.note.findMany();
     }
 
     async editNote(id: number, keyWord: string, content: string) {

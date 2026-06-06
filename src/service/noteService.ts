@@ -9,6 +9,10 @@ export class noteService {
         return await this.note.create(createNoteDto.keyWord, createNoteDto.content, createNoteDto.categoryId);
     }
 
+    async getAllNote() {
+       return await this.note.getAllNote()
+    }
+
     async editNote(editNoteDto: updateNoteDTO) {
         return await this.note.editNote(editNoteDto.id, editNoteDto.keyWord, editNoteDto.content);
     }
