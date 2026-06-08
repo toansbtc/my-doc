@@ -21,11 +21,11 @@ export class updateCategoryDTO {
 export class deleteCategoryDTO {
     @IsNumber()
     @IsNotEmpty()
-    categoryId: string;
+    categoryId: number;
 }
 
 export class getCategoryDTO {
     @IsNumber()
     @IsNotEmpty()
-    categoryId: string;
+    categoryId: number;
 }
