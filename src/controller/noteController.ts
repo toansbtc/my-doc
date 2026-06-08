@@ -1,8 +1,8 @@
 import { Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
-import { Private } from "src/decorator/role";
-import { noteService } from "src/service/noteService";
+import { Private } from "../decorator/role";
+import { noteService } from "../service/noteService";
 import { Body } from "@nestjs/common";
-import { createNoteDTO, deleteNoteDTO, updateNoteDTO } from "src/DTO/noteDTO";
+import { createNoteDTO, deleteNoteDTO, updateNoteDTO } from "../DTO/noteDTO";
 
 @Controller('note')
 export class noteController {

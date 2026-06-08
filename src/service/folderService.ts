@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { createNoteDTO, updateNoteDTO } from "src/DTO/noteDTO";
-import { FolderCRUD } from "src/prismaCRUD/folderCRUD";
+import { createNoteDTO, updateNoteDTO } from "../DTO/noteDTO";
+import { FolderCRUD } from "../prismaCRUD/folderCRUD";
 @Injectable()
 export class folderService {
     constructor(private folder: FolderCRUD) { }

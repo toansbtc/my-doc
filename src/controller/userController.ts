@@ -1,11 +1,11 @@
 import { Controller, Get, Post, Body, Param, Delete, Put, Res, Req } from "@nestjs/common";
-import { createUserDTO, LoginDTO, updateUserDTO } from "src/DTO/userDTO";
-import { UserService } from "src/service/userService";
+import { createUserDTO, LoginDTO, updateUserDTO } from "../DTO/userDTO";
+import { UserService } from "../service/userService";
 import { JwtService } from "@nestjs/jwt";
 import *  as bcrypt from "bcrypt";
 import express from "express";
-import { ReadCookie } from "src/decorator/readCookie";
-import { Private } from "src/decorator/role";
+import { ReadCookie } from "../decorator/readCookie";
+import { Private } from "../decorator/role";
 
 @Controller('user')
 export class UserController {

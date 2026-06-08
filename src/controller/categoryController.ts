@@ -1,8 +1,8 @@
 import { Controller, Delete, Get, Post, Put } from "@nestjs/common";
-import { Private } from "src/decorator/role";
-import { categoryService } from "src/service/categoryService";
+import { Private } from "../decorator/role";
+import { categoryService } from "../service/categoryService";
 import { Body } from "@nestjs/common";
-import { createCategoryDTO, updateCategoryDTO, deleteCategoryDTO, getCategoryDTO } from "src/DTO/categoryDTO";
+import { createCategoryDTO, updateCategoryDTO, deleteCategoryDTO, getCategoryDTO } from "../DTO/categoryDTO";
 
 @Controller('category')
 export class CategoryController {

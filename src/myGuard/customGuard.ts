@@ -1,6 +1,6 @@
 import { CanActivate, ExecutionContext, UnauthorizedException, Injectable, ForbiddenException } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
-import { Private_Key } from "src/decorator/role";
+import { Private_Key } from "../decorator/role";
 import { JwtService } from "@nestjs/jwt";
 
 @Injectable()

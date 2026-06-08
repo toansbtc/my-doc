@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { createNoteDTO, updateNoteDTO } from "src/DTO/noteDTO";
-import { noteCRUD } from "src/prismaCRUD/noteCRUD";
+import { createNoteDTO, updateNoteDTO } from "../DTO/noteDTO";
+import { noteCRUD } from "../prismaCRUD/noteCRUD";
 @Injectable()
 export class noteService {
     constructor(private note: noteCRUD) { }

@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Injectable, Post } from "@nestjs/common";
-import { folderService } from "src/service/folderService";
+import { folderService } from "../service/folderService";
 @Controller("folder")
 export class folderController {
     constructor(private folderService: folderService) { }

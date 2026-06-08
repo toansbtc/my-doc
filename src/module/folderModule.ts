@@ -1,8 +1,8 @@
 import { Module } from "@nestjs/common";
-import { PrismaService } from "src/service/prismaService";
-import { folderService } from "src/service/folderService";
-import { FolderCRUD } from "src/prismaCRUD/folderCRUD";
-import { folderController } from "src/controller/folderController";
+import { PrismaService } from "../service/prismaService";
+import { folderService } from "../service/folderService";
+import { FolderCRUD } from "../prismaCRUD/folderCRUD";
+import { folderController } from "../controller/folderController";
 
 @Module({
     providers: [folderService,FolderCRUD, PrismaService],
