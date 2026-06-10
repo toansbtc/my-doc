@@ -49,13 +49,13 @@ export class UserController {
                 res.cookie('token', this.jwtService.sign(payload), {
                     httpOnly: true,
                     secure: true,
-                    sameSite: 'strict',
+                    sameSite: 'none',
                     maxAge: 1000 * 60 * 15
                 });
                 res.cookie('refreshToken', this.jwtService.sign(payload, { expiresIn: '7d', secret: process.env.REFRESH_TOKEN_SECRET }), {
                     httpOnly: true,
                     secure: true,
-                    sameSite: 'strict',
+                    sameSite: 'none',
                     maxAge: 1000 * 60 * 60 * 24 * 7
                 });
                 return "Login success";
