@@ -83,7 +83,7 @@ export class UserController {
                 res.cookie('token', this.jwtService.sign(payload), {
                     httpOnly: true,
                     secure: true,
-                    sameSite: 'strict',
+                    sameSite: 'none',
                     maxAge: 1000 * 60 * 15
                 });
                 return "Refresh token success";
