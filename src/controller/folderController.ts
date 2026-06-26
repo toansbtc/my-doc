@@ -17,12 +17,12 @@ export class folderController {
     }
 
     @Post("/updateFolder")
-    async updateFolder(folderId: number, folderName: string) {
-        return this.folderService.update(folderId,folderName)
+    async updateFolder(@Body() data) {
+        return this.folderService.update(parseInt(data.folderId),data.folderName)
     }
 
     @Post("/deleteFolder")
-    async deleteFolder(folderId: number) {
-        return this.folderService.delete(folderId)
+    async deleteFolder(@Body() data) {
+        return this.folderService.delete(parseInt(data.folderId))
     }
 }
